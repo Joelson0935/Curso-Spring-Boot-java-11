@@ -1,11 +1,13 @@
 package com.educandoweb.Curso.Entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario implements Serializable {
@@ -23,6 +25,8 @@ public class Usuario implements Serializable {
 	private String fone;
 
 	private String senha;
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos;
 
 	public Usuario() {
 	}
@@ -70,6 +74,10 @@ public class Usuario implements Serializable {
 
 	public Long getId() {
 		return id;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
 	@Override
